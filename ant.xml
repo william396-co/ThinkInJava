@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     ant build                   
+     ====================================================================== -->
+<project name="build-support" basedir="." >
+	<property name="project-encoding" value="UTF-8" />
+	<property name="rootdir" location="${basedir}" />
+	
+	<property name="assemblyName" value="assemblyName" />
+		
+	<property name="project-src-dir" location="${basedir}/src" />
+	<property name="resources-dir" location="${basedir}/resources" />
+
+	<property name="dist-dir" location="${basedir}/dist" />
+	<property name="tmp-dir" location="${basedir}/classes" />
+	<property name="test-dir" location="${basedir}/test" />
+
+	<!-- get TOMCAT_HOME  path -->
+	<property name="TOMCAT_HOME" location="C:/Program Files/Apache Software Foundation/Tomcat 7.0"/>
+
+	<path id="ext-class-path">
+		<fileset dir="${dist-dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="common-class-path">
+		<path refid="ext-class-path" />
+		<fileset dir="${rootdir}/required-lib">
+			<include name="**/*.jar" />
+		</fileset>		
+	</path>
+	
+	<path id="class-path">
+		<path refid="common-class-path" />
+		<fileset dir="${rootdir}/provided-lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>	
+	
+	<path id="web-class-path">
+		<path refid="ext-class-path" />
+		<fileset dir="${dist-dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	
+	<!-- ================================= 
+          target: complie-common              
+         ================================= -->
+	<target name="complie-common" depends="pre-complie" description="complie common">
+		<complie src-dir="${project-src-dir}" dest-dir="${tmp-dir}">
+			<after>
+				<!--<antcall target="instrument" /> -->  
+				<jar destfile="${dist-dir}/${assemblyName}.jar" basedir="${tmp-dir}" index="true" />
+			</after>
+		</complie>
+		<echo message="Building ${assemblyName}.jar into ${dist-dir} successful!" />
+		<copy todir="${rootdir}/dist">
+			<fileset file="${dist-dir}/${assemblyName}.jar" />
+		</copy>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: pre-dist                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="pre-dist">
+		<mkdir dir="${dist-dir}"/>
+		<delete>
+			<fileset dir="${dist-dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</delete>
+	</target>
+
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: pre-complie                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="pre-complie">
+		<deletecreate dir="${tmp-dir}" />
+		<mkdir dir="${dist-dir}"/>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean                      
+         - - - - - - - - - - - - - - - - - -->
+	<target name="clean">
+		<delete dir="${tmp-dir}" />
+	</target>
+
+	<!-- = = = = = = = = = = = = = = = = =
+	  	macrodef: deletecreate          
+	  = = = = = = = = = = = = = = = = = -->
+	<macrodef name="deletecreate">
+		<attribute name="dir" />
+		<sequential>
+			<delete dir="@{dir}" />
+			<mkdir dir="@{dir}" />
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+			macrodef: complie
+		= = = = = = = = = = = = = = = = = -->
+	<macrodef name="complie">
+		<attribute name="src-dir" />
+		<attribute name="dest-dir" default="${tmp-dir}" />
+		<attribute name="java-encoding" default="UTF-8" />
+		<attribute name="class-path-id" default="class-path" />
+		<element name="after" optional="true" />
+		<sequential>
+			<echo message="compiling... " />
+			<echo message="src: @{src-dir} " />
+			<echo message="dest: @{dest-dir} " />
+			<echo message="class-path-id: @{class-path-id}" />
+			<mkdir dir="@{dest-dir}" />
+			<javac destdir="@{dest-dir}" srcdir="@{src-dir}" encoding="@{java-encoding}"
+				   source="1.7"
+				   target="1.7"
+				   debug="true"
+				   includeantruntime="true"
+				   includejavaruntime="true">
+				<classpath>
+					<path refid="@{class-path-id}" />
+				</classpath>
+			</javac>
+			<copy todir="@{dest-dir}">
+				<fileset dir="${resources-dir}">
+					<include name="**/*.properties" />
+					<include name="**/*.xml" />
+					<include name="**/*.dtd" />
+					<include name="**/*.xsd" />
+				</fileset>
+			</copy>
+			<echo message="compile finished. " />
+			<after />
+			<delete dir="@{dest-dir}" />
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+			  	macrodef: build-war          
+	  = = = = = = = = = = = = = = = = = -->
+	<macrodef name="package-war">
+		<attribute name="src-dir" />
+		<attribute name="dest-file" />
+		<sequential>
+			<deletecreate dir="${tmp-dir}/classes"/>
+			<copy todir="${tmp-dir}/classes">
+				<fileset dir="${resources-dir}">
+					<exclude name="spring*"/>
+					<exclude name="spring/**/*"/>
+					<exclude name="struts*"/>
+					<exclude name="struts/**/*"/>
+				</fileset>
+			</copy>
+			<copy todir="${tmp-dir}/classes" overwrite="true">	
+				<fileset dir="@{src-dir}">
+					<exclude name="com*"/>
+					<exclude name="com/**/*"/>
+					<exclude name="**/*.java"/>
+				</fileset>
+			</copy>	
+			<copy todir="${tmp-dir}/classes" overwrite="true">	
+				<fileset dir="${test-dir}">
+					<include name="**/*.xml" />
+					<include name="**/*.properties" />
+					<include name="**/*.propertes" />
+					<include name="**/*.jks" />
+				</fileset>
+			</copy>
+			<copy todir="${tmp-dir}/lib">
+				<fileset dir="${webinf-dir}/lib">
+				</fileset>
+			</copy>
+			<war destfile="${dist-dir}/@{dest-file}" webxml="${webinf-dir}/web.xml">
+				<classes dir="${tmp-dir}/classes" />
+				<lib dir="${tmp-dir}/lib" />
+				<!-- include image/jsp/etc -->
+				<zipfileset dir="${web-root}">
+					<include name="**/*.jsp" />
+					<include name="**/*.html" />
+					<include name="**/*.htm" />
+					<include name="**/*.js"/>
+					<include name="**/*.css"/>
+					<include name="**/*.less"/>
+					<include name="**/*.jpg"/>
+					<include name="**/*.swf"/>
+					<include name="**/*.gif"/>
+					<include name="**/*.png"/>
+					<include name="**/*.mp3"/>
+					<include name="**/*.ico"/>
+					<include name="**/*.tld" />
+					<include name="**/sitemesh/*.xml"/>
+				</zipfileset>
+			</war>
+		</sequential>
+	</macrodef>		
+
+</project>
+
