@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Common" default="build" basedir="." >
+    <property name="rootdir" value="${basedir}/../" />
+    <property name="assemblyName" value="Common" />
+    <import file="../ant.xml"/>
+
+    <path id="ext-class-path">
+        <fileset dir="${rootdir}/dist">
+        </fileset>
+    </path>
+
+    <target name="build">
+        <antcall target="complie-common" />
+    </target>
+
+</project>
