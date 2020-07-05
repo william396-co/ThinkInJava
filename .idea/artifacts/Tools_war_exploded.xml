@@ -22,6 +22,9 @@
           <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/bcmail-jdk15-1.45.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/bcmail-jdk16-1.46.jar" />
           <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/commons-lang-2.4.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/log4j-1.2.17.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/log4j-api-2.7.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/Tools/web/WEB-INF/lib/log4j-core-2.7.jar" />
         </element>
       </element>
     </root>
