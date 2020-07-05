@@ -3,5 +3,7 @@
   <component name="AntConfiguration">
     <defaultAnt name="Apache Ant version 1.9.4" />
     <buildFile url="file://$PROJECT_DIR$/Common/build.xml" />
+    <buildFile url="file://$PROJECT_DIR$/HelloJava/build.xml" />
+    <buildFile url="file://$PROJECT_DIR$/Tools/build.xml" />
   </component>
 </project>

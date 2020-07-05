@@ -8,10 +8,9 @@ class Rock {
     }
 }
 
-class Rock2{
-    Rock2(int i)
-    {
-        println("Rock2"+i);
+class Rock2 {
+    Rock2(int i) {
+        println("Rock2" + i);
     }
 }
 
