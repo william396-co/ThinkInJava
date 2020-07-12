@@ -1,8 +1,11 @@
 package com;
 
 import com.i3ring.Decoder;
+import com.i3ring.Password;
 import com.utils.Md5;
 import com.utils.StringUtils;
+import org.apache.commons.codec.Encoder;
+import org.apache.commons.codec.EncoderException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -105,6 +108,7 @@ public class ToolsDemo {
         //buildParams();
         //testResponse();
 
+
         Decoder de;
         de = new Decoder();
         try {
@@ -112,7 +116,24 @@ public class ToolsDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println(de.decode("uWxURQsg3sPAXfGtI+3JHkpTHJCzyLnLNjCqO1bdR58HdR3y0HnO9ThNfyYuDMEI7Jim9tyoIP3ygoHFrJjiLkcAete+fh41arMvI13ocG4="));
+        System.out.println(de.decode("qgE5pRkjx/745GeebospSw=="));
+        System.out.println(de.decode("bnSOTjuZ+bu04meJSStmKIO3x4zRORFUa6RcWGKH1dngOn0x7Khn1w=="));
+
+        System.out.println(de.decode("uWxURQsg3sPAXfGtI+3JHkpTHJCzyLnLNjCqO1bdR58HdR3y0HnO9ThNfyYuDMEI7Jim9tyoIP3ygoHFrJjiLkcAete+fh41arMvI13ocG4="));
+        System.out.println(de.decode("+wa8Vu0MokdjFQb6mRPw0Wk8BzBVqWB+95iH1xClFCoeqO42D6q7Aqd38GsVwru3xeBpFXap8nQ5x553/oKtMGKlmZnu/li4w/yN/DCCLJk="));
+
+       // System.out.println(de.decode("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS"));
+        //System.out.println(de.decode("kPda37chX6p749bi31uEn3fWiFM4xT4IUJ31i80GUQNiaEOawzBb1lgi5/sh8psk8z9VhQnFnFiHRglbFfxuwkXYFefIxv31KwRROtWWBNM="));
+        System.out.println(de.decode("2i01fJeHyWkH24pEpIXQsj4V+pvZShwXd+EMlh7Ylaf3+0cy3R6038YB9srFF3RDqXmjsAzaNVX9dKk3h9FNl6BXuXnZNycYt1widQYCTUY="));
+        System.out.println(de.decode("+wa8Vu0MokdjFQb6mRPw0Wk8BzBVqWB+95iH1xClFCoeqO42D6q7Aqd38GsVwru3xeBpFXap8nQ5x553/oKtMGKlmZnu/li4w/yN/DCCLJk="));
+        System.out.println(de.decode("9xRPKbdChf3lh77rRdJeEQ=="));
+        System.out.println(de.decode("bnrAehDXm3FCphiQwOnNc42spS+JBq4VHOcWcpSAcdUkC0qvWZAmW8XbZzmGuUYg"));
+        System.out.println(de.decode("reRQdKefj0FAqNpK+4MDYUmBbcHRoRP++nC16m9UMuBWqNQoyJ7yVK21rgSYs0of"));
+
         System.out.println(de.decode("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS"));
+        System.out.println(de.decode("SnEfbZaA77EMUgc/edL/8RJO3ZWt5ZOc7HsEcnkz/3uGNTWTelpyZ9OX6PxTZspd"));
 
     }
 }

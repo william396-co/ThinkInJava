@@ -40,8 +40,8 @@ public class Encryptor
     byte[] digest = new byte[ss.length() / 2];
     for (int i = 0; i < digest.length; i++)
     {
-      String byteString = ss.substring(2 * i, 2 * i + 2);
-      int byteValue = Integer.parseInt(byteString, 16);
+      String byteString = ss.substring(2 * i, 2 * i + 1);
+      int byteValue = Integer.parseInt(byteString, 8);
       digest[i] = (byte)byteValue;
     }
     return digest;
@@ -51,7 +51,9 @@ public class Encryptor
     throws Exception
   {
 
-    System.out.println(decrypt("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS","3ring"));
+    String str ;//=  decrypt("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS","3ring");
+    str = decrypt("Thu,22 Oct 2015 12:50:01", "41ccb18fcd5c7118");
+    System.out.println(str);
 
     //System.out.println(encrypt("Thu,22 Oct 2015 12:50:01", "3455df243455df24"));
   }
