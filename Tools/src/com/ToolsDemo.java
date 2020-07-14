@@ -132,6 +132,7 @@ public class ToolsDemo {
         System.out.println(de.decode("bnrAehDXm3FCphiQwOnNc42spS+JBq4VHOcWcpSAcdUkC0qvWZAmW8XbZzmGuUYg"));
         System.out.println(de.decode("reRQdKefj0FAqNpK+4MDYUmBbcHRoRP++nC16m9UMuBWqNQoyJ7yVK21rgSYs0of"));
 
+        System.out.println(de.decode("xcPjahwEJrMcLfmJ2o8NLQ=="));
         System.out.println(de.decode("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS"));
         System.out.println(de.decode("SnEfbZaA77EMUgc/edL/8RJO3ZWt5ZOc7HsEcnkz/3uGNTWTelpyZ9OX6PxTZspd"));
 
