@@ -3,6 +3,7 @@ package com.thinkinjava.util;
 
 public class Print {
 
+    public static void println()    {     System.out.println();    }
     public static void print(double d) {
         System.out.print(d);
     }
