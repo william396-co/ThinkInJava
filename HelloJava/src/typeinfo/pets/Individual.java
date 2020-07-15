@@ -1,4 +1,4 @@
-package typeinfos.pets;
+package typeinfo.pets;
 
 public class Individual implements Comparable<Individual> {
     private static long counter = 0;

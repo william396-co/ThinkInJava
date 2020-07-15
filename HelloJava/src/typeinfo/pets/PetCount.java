@@ -1,4 +1,4 @@
-package typeinfos.pets;
+package typeinfo.pets;
 
 import static com.thinkinjava.util.Print.*;
 import java.util.HashMap;

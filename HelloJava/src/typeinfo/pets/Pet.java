@@ -1,4 +1,4 @@
-package typeinfos.pets;
+package typeinfo.pets;
 
 public class Pet  extends Individual{
     public Pet(String name) {

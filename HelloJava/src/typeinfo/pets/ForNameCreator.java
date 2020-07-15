@@ -1,4 +1,4 @@
-package typeinfos.pets;
+package typeinfo.pets;
 
 import java.util.ArrayList;
 import java.util.List;
