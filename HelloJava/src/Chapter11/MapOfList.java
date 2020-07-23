@@ -3,7 +3,6 @@ package Chapter11;
 
 import static com.thinkinjava.util.Print.*;
 
-import Chapter7.CADSystem;
 import typeinfo.pets.*;
 
 import java.util.Arrays;

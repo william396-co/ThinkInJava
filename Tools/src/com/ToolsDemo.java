@@ -8,8 +8,14 @@ import org.apache.commons.codec.Encoder;
 import org.apache.commons.codec.EncoderException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.bouncycastle.jcajce.provider.digest.RIPEMD320;
+import org.framework.core.crypto.Digest;
 
+import java.io.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ToolsDemo {
@@ -102,11 +108,64 @@ public class ToolsDemo {
 
     }
 
+
+    //字符串反序列化为对象
+    public static Object objectDeserialization(String serStr){
+        Object newObj = null;
+        try {
+            String redStr = java.net.URLDecoder.decode(serStr, "UTF-8");
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(redStr.getBytes("ISO-8859-1"));
+            ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+            newObj = objectInputStream.readObject();
+            objectInputStream.close();
+            byteArrayInputStream.close();
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return newObj;
+    }
+
     public static void main(String[] args) throws Exception {
 
+        System.out.println(new Date().getTime()/1000);
+
+        BigDecimal da = new BigDecimal(3000000);
+        System.out.println(da.setScale(2,BigDecimal.ROUND_HALF_UP));
+
+
+/*
+
+        DataInputStream dis = null;
+        dis = new DataInputStream(new FileInputStream("D:/MyProject/ThinkInJava/Tools/list_.dat"));
+        byte[] bytes = new byte[1024 *10];
+        dis.read(bytes);
+
+
+        //从redis中取中字符串
+        if(!StringUtils.isEmpty(bytes.toString())){
+            //将取出的字符串反序列化为对象
+            List<HashMap<String, String>> deList = (List<HashMap<String, String>>) objectDeserialization(bytes.toString());
+            if(deList!=null && deList.size()>0){
+                for(Map m : deList){
+                    System.out.println(m.get("number")+"   "+m.get("name"));
+                }
+            }
+        }
+*/
 
         //buildParams();
         //testResponse();
+        String str = Digest.sha256().digest("551444");
+
+        System.out.println(str);
+/*
 
 
         Decoder de;
@@ -116,6 +175,10 @@ public class ToolsDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println(de.decode("2i01fJeHyWkH24pEpIXQsj4V+pvZShwXd+EMlh7Ylaf3+0cy3R6038YB9srFF3RDqXmjsAzaNVX9dKk3h9FNl6BXuXnZNycYt1widQYCTUY="));
+        System.out.println(de.decode(" VBP5VcPU43RfmRin3gvCHXTKNk8IZtR9"));
+        System.out.println(de.decode("SnEfbZaA77EMUgc/edL/8RJO3ZWt5ZOc7HsEcnkz/3uGNTWTelpyZ9OX6PxTZspd"));
 
         System.out.println(de.decode("uWxURQsg3sPAXfGtI+3JHkpTHJCzyLnLNjCqO1bdR58HdR3y0HnO9ThNfyYuDMEI7Jim9tyoIP3ygoHFrJjiLkcAete+fh41arMvI13ocG4="));
         System.out.println(de.decode("qgE5pRkjx/745GeebospSw=="));
@@ -135,6 +198,7 @@ public class ToolsDemo {
         System.out.println(de.decode("xcPjahwEJrMcLfmJ2o8NLQ=="));
         System.out.println(de.decode("ki1JvW2nfvvPWeGnsFmJT0sL1t4JIHgS"));
         System.out.println(de.decode("SnEfbZaA77EMUgc/edL/8RJO3ZWt5ZOc7HsEcnkz/3uGNTWTelpyZ9OX6PxTZspd"));
+*/
 
     }
 }
