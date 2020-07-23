@@ -1,5 +1,7 @@
 package Chapter13;
 
+import java.util.Date;
+
 import static com.thinkinjava.util.Print.*;
 public class SimpleFormat {
 
@@ -10,5 +12,9 @@ public class SimpleFormat {
         System.out.format("Row 1:[%d %f]",x,y);
         println();
         System.out.printf("Row 1:[%d %f]",x,y);
+        println();
+
+        System.out.println(String.format("%.3f",4324345.5463243));
+
     }
 }
