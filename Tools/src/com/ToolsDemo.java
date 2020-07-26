@@ -30,15 +30,13 @@ public class ToolsDemo {
 
             String orderId = String.valueOf(11209253);
 
-            requestParams.put("banknum","6228480868674666276");
-            requestParams.put("banker","李昌燕");
-            requestParams.put("nonce", "43qayL");               //商户号
-            requestParams.put("timestamp", "1595832568");         //交易方
-            requestParams.put("callback_url","http://pay.bowin9.com/trans/d0033notify.action");//交易银行名称
-            requestParams.put("order_money", "100.00");      //交易卡号
-            requestParams.put("ordertype", "DF_ZFBYHK");      //交易卡号
-            requestParams.put("merchant_id","");                         //附言
-            requestParams.put("order_no","11246026");                               //收款方手机号
+            requestParams.put("uid", "975349");               //商户号
+            requestParams.put("addtime", "2020-07-25 02:03:46");         //交易方
+            requestParams.put("price","1001.00");//交易银行名称
+            requestParams.put("notify", "http://pay.bowin6.com/letianpaynotify.action");      //交易卡号
+            requestParams.put("back", "http://pay.bowin6.com//return.action");      //交易卡号
+            requestParams.put("code","ALIPAY");                         //附言
+            requestParams.put("orderid","01200725140346000724");                               //收款方手机号
             //requestParams.put("money",
            //         String.valueOf(300.0));   //转账金额（单位：元）
 
@@ -56,9 +54,9 @@ public class ToolsDemo {
 
 
     public static String buildSign() {
-        Map<String, String> map = StringUtils.paraFilter(requestParams, true);
+        Map<String, String> map = StringUtils.paraFilter(requestParams, false);
         String kvs = StringUtils.contcatKeyValueString(map, true);
-        kvs = kvs + "171MT5mdF3CrN2pfhlB72H";
+        kvs = kvs + "jrrcawk3us5b5vunmfvtohkcpasew5y3";
         System.out.println(kvs);
         String md5Str=  Md5.getMD5(kvs, "UTF-8").toUpperCase();
         System.out.println(md5Str);
