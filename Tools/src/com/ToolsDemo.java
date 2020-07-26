@@ -30,18 +30,19 @@ public class ToolsDemo {
 
             String orderId = String.valueOf(11209253);
 
-            requestParams.put("account", "1593672156060");               //商户号
-            requestParams.put("business", "方萌");         //交易方
-            requestParams.put("businessBank","中国农业银行");//交易银行名称
-            requestParams.put("businessCard", "6228481466819719172");      //交易卡号
-            requestParams.put("businessDescription","");                         //附言
-            requestParams.put("businessPhone","");                               //收款方手机号
-            requestParams.put("money",
-                    String.valueOf(300.0));   //转账金额（单位：元）
+            requestParams.put("uid", "975349");               //商户号
+            requestParams.put("addtime", "2020-07-25 02:03:46");         //交易方
+            requestParams.put("price","1001.00");//交易银行名称
+            requestParams.put("notify", "http://pay.bowin6.com/letianpaynotify.action");      //交易卡号
+            requestParams.put("back", "http://pay.bowin6.com//return.action");      //交易卡号
+            requestParams.put("code","ALIPAY");                         //附言
+            requestParams.put("orderid","01200725140346000724");                               //收款方手机号
+            //requestParams.put("money",
+           //         String.valueOf(300.0));   //转账金额（单位：元）
 
-            requestParams.put("notifyUrl", "http://pay.bowin9.com/trans/d0031notify.action");                 //回调地址
-            requestParams.put("reverseUrl","");                                  //转账冲正回调地址
-            requestParams.put("shOrderId", orderId);                             //商户订单号， 不可重复
+           // requestParams.put("notifyUrl", "http://pay.bowin9.com/trans/d0031notify.action");                 //回调地址
+           // requestParams.put("reverseUrl","");                                  //转账冲正回调地址
+           // requestParams.put("shOrderId", orderId);                             //商户订单号， 不可重复
 
             requestParams.put("sign", buildSign());                         //MD5签名(密文大写)
         }
@@ -55,7 +56,7 @@ public class ToolsDemo {
     public static String buildSign() {
         Map<String, String> map = StringUtils.paraFilter(requestParams, false);
         String kvs = StringUtils.contcatKeyValueString(map, true);
-        kvs = kvs + "&key=219f9dd59d09462db584f14053f95f8e";
+        kvs = kvs + "jrrcawk3us5b5vunmfvtohkcpasew5y3";
         System.out.println(kvs);
         String md5Str=  Md5.getMD5(kvs, "UTF-8").toUpperCase();
         System.out.println(md5Str);
@@ -134,10 +135,10 @@ public class ToolsDemo {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(new Date().getTime()/1000);
+/*        System.out.println(new Date().getTime()/1000);
 
         BigDecimal da = new BigDecimal(3000000);
-        System.out.println(da.setScale(2,BigDecimal.ROUND_HALF_UP));
+        System.out.println(da.setScale(2,BigDecimal.ROUND_HALF_UP));*/
 
 
 /*
@@ -160,8 +161,8 @@ public class ToolsDemo {
         }
 */
 
-        //buildParams();
-        //testResponse();
+        buildParams();
+        testResponse();
         String str = Digest.sha256().digest("551444");
 
         System.out.println(str);
