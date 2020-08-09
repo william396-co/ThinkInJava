@@ -182,6 +182,23 @@ public class StringUtils {
 
     }
 
+    public static String contcatKeyValueStringEx(Map<String, String> params, boolean toSort) {
+        List<String> keys = new ArrayList(params.keySet());
+        if (toSort) {
+            Collections.sort(keys);
+        }
+
+        String prestr = "";
+
+
+        for (int i = 0; i < keys.size(); ++i) {
+            String key = (String) keys.get(i);
+            String value = params.get(key) == null ? "" : (String) params.get(key);
+            prestr += key + value;
+        }
+
+        return prestr;
+    }
     public static String contcatKeyValueString(Map<String, String> params, boolean toSort) {
         List<String> keys = new ArrayList(params.keySet());
         if (toSort) {

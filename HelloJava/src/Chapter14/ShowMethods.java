@@ -1,7 +1,5 @@
 package Chapter14;
 
-import com.sun.xml.internal.ws.api.model.MEP;
-
 import static com.thinkinjava.util.Print.*;
 
 import java.util.regex.*;

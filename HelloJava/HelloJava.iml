@@ -31,5 +31,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="HelloJava (2)" level="project" />
+    <orderEntry type="module" module-name="Common" />
   </component>
 </module>

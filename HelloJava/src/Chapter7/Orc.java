@@ -1,6 +1,5 @@
 package Chapter7;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 
 import static com.thinkinjava.util.Print.*;
 
