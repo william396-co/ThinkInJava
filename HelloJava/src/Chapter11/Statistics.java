@@ -1,7 +1,5 @@
 package Chapter11;
 
-import com.sun.javafx.image.IntPixelGetter;
-import org.omg.CORBA.INTERNAL;
 
 import java.util.HashMap;
 import java.util.Map;

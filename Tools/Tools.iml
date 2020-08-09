@@ -184,5 +184,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Tools" level="project" />
   </component>
 </module>

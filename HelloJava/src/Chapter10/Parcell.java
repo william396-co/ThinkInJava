@@ -1,6 +1,5 @@
 package Chapter10;
 
-import sun.security.krb5.internal.crypto.Des;
 
 import static com.thinkinjava.util.Print.*;
 
