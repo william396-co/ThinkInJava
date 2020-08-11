@@ -1,8 +1,30 @@
 package com.thinkinjava.util;
 
 
+import java.io.PrintStream;
+
 public class Print {
 
+
+    // Print with a newline:
+    public static void println(Object obj) {
+        System.out.println(obj);
+    }
+    public static void print(Object obj) {
+        System.out.print(obj);
+    }
+    // Print a newline by itself:
+    public static void println() {
+        System.out.println();
+    }
+
+    // The new Java SE5 printf() (from C):
+    public static PrintStream
+    printf(String format, Object... args) {
+        return System.out.printf(format, args);
+    }
+
+/*
     public static void println()    {     System.out.println();    }
     public static void print(double d) {
         System.out.print(d);
@@ -74,5 +96,5 @@ public class Print {
 
     private static void println(float x) {
         System.out.println(x);
-    }
+    }*/
 }

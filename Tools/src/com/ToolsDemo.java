@@ -161,11 +161,15 @@ public class ToolsDemo {
         }
 */
 
-        buildParams();
+        Integer amout = 100200;
+        String str = String.format("%.0f", amout / 100.0D);
+        System.out.println(str);
+
+     /*   buildParams();
         testResponse();
         String str = Digest.sha256().digest("551444");
 
-        System.out.println(str);
+        System.out.println(str);*/
 /*
 
 
