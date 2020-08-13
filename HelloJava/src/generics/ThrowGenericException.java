@@ -1,8 +1,6 @@
 package generics;
 
 
-import sun.awt.windows.WSystemTrayPeer;
-
 import java.util.ArrayList;
 import java.util.List;
 
